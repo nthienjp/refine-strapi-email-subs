@@ -25,7 +25,7 @@ module.exports = {
       (subscriber) => {
         let to = subscriber.email;
 
-        strapi.plugins["email"].services.email.send({
+        return strapi.plugins["email"].services.email.send({
           subject,
           text,
           to,
@@ -33,7 +33,7 @@ module.exports = {
       }
     );
 
-    Promise.all(worker);
+    await Promise.all(worker);
 
     return entity;
   },
